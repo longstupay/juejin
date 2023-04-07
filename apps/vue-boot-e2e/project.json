@@ -1,0 +1,24 @@
+{
+  "name": "vue-boot-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/vue-boot-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/nx-plugin:e2e",
+      "options": {
+        "target": "vue-boot:build",
+        "jestConfig": "apps/vue-boot-e2e/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/vue-boot-e2e/**/*.ts"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["vue-boot"]
+}

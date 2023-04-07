@@ -15,8 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "taibui-devkit": ["libs/nx-plugin-ui/src/index.ts"],
-      "nx-awesome-lib": ["libs/ui/taib-ui/src/index.ts"]
+      "@longstupay/vue-boot": ["libs/vue-boot/src/index.ts"],
+      "nx-awesome-lib": ["libs/ui/taib-ui/src/index.ts"],
+      "taibui-devkit": ["libs/nx-plugin-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
