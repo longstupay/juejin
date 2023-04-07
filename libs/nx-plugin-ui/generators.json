@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-plugin-ui",
+  "version": "0.0.1",
+  "generators": {
+    "nx-plugin-ui": {
+      "factory": "./src/generators/nx-plugin-ui/generator",
+      "schema": "./src/generators/nx-plugin-ui/schema.json",
+      "description": "nx-plugin-ui generator"
+    },
+    "library": {
+      "factory": "./src/generators/library/generator",
+      "schema": "./src/generators/library/schema.json",
+      "description": "library generator"
+    }
+  }
+}
