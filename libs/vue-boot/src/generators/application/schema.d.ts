@@ -5,7 +5,7 @@ export interface ApplicationGeneratorSchema {
   name: string;
   tags?: string;
   directory?: string;
-  style?: SupportedStyles;
+  style?: SupportedStyles | 'none';
   linter?: Linter;
   skipFormat?: boolean;
   e2eTestRunner?: 'cypress' | 'none';
@@ -16,6 +16,7 @@ export interface ApplicationGeneratorSchema {
   unitTestRunner?: 'jest' | 'vitest' | 'none';
   type?: 'ts' | 'js';
   skipPackageJson?: boolean;
+  bundler?: 'vite';
 }
 
 export interface NormalizedSchema extends ApplicationGeneratorSchema {

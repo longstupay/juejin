@@ -12,6 +12,16 @@
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
       "description": "init generator"
+    },
+    "viteinit": {
+      "factory": "./src/generators/viteinit/generator",
+      "schema": "./src/generators/viteinit/schema.json",
+      "description": "vitevue generator"
+    },
+    "viteconfiguration": {
+      "factory": "./src/generators/viteconfiguration/generator",
+      "schema": "./src/generators/viteconfiguration/schema.json",
+      "description": "viteconfiguration generator"
     }
   }
 }

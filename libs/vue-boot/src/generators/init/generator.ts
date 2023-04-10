@@ -11,7 +11,12 @@ import {
 } from '@nrwl/devkit';
 
 import { initGenerator as jsInitGenerator } from '@nrwl/js';
-import { nxVersion, typesNodeVersion, vueVersion } from '../../utils/versions';
+import {
+  nxVersion,
+  typesNodeVersion,
+  viteVersion,
+  vueVersion,
+} from '../../utils/versions';
 
 import { InitGeneratorSchema } from './schema';
 
@@ -34,14 +39,14 @@ function setDefault(host: Tree) {
 }
 
 function updateDependencies(host: Tree) {
-  removeDependenciesFromPackageJson(host, ['vue'], ['@longstupay/vue-nx-boot']);
+  removeDependenciesFromPackageJson(host, ['vue'], ['vite']);
 
   const dependencies = {
     vue: vueVersion,
   };
 
   return addDependenciesToPackageJson(host, dependencies, {
-    '@longstupay/vue-nx-boot': nxVersion,
+    // '@longstupay/vue-nx-boot': nxVersion,
     '@types/node': typesNodeVersion,
   });
 }
@@ -52,7 +57,7 @@ export async function vueInitGenerator(
 ) {
   const tasks: GeneratorCallback[] = [];
 
-  setDefault(host);
+  // setDefault(host);
 
   const jsInitTask = await jsInitGenerator(host, {
     ...schema,

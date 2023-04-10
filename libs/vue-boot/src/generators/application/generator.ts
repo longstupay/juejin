@@ -1,8 +1,10 @@
 import {
   addProjectConfiguration,
+  ensurePackage,
   formatFiles,
   generateFiles,
   getWorkspaceLayout,
+  joinPathFragments,
   names,
   offsetFromRoot,
   runTasksInSerial,
@@ -17,15 +19,65 @@ import { createPrompt } from './libs/prompt';
 
 import normalizeOptions from './libs/normalize-option';
 import { listPresetConfig } from './libs/list-preset-config';
+import vueInitGenerator from '../init/generator';
+import { createApplicationFiles } from './libs/create-application-files';
+import { addProject } from './libs/add-project';
+import { viteVersion } from '../../utils/versions';
+import viteConfigurationGenerator from '../viteconfiguration/generator';
 
 export default async function (
   tree: Tree,
   options: ApplicationGeneratorSchema
 ): Promise<GeneratorCallback> {
-  const task: GeneratorCallback[] = [];
+  const tasks: GeneratorCallback[] = [];
   const normalizedOptions = normalizeOptions(tree, options);
 
-  // init task
+  // init task, etc. add @longstupay/vue-nx-boot,add generator fild on nx.json
+  const vueInitTask = await vueInitGenerator(tree, {
+    ...normalizedOptions,
+    skipPackageJson: false,
+  });
+  tasks.push(vueInitTask);
+
+  createApplicationFiles(tree, normalizedOptions);
+  addProject(tree, normalizedOptions);
+
+  // vite start
+
+  if (options.bundler === 'vite') {
+    // We recommend users use `import.meta.env.MODE` and other variables in their code to differentiate between production and development.
+    // See: https://vitejs.dev/guide/env-and-mode.html
+    if (
+      tree.exists(
+        joinPathFragments(normalizedOptions.appProjectRoot, 'src/environments')
+      )
+    ) {
+      tree.delete(
+        joinPathFragments(normalizedOptions.appProjectRoot, 'src/environments')
+      );
+    }
+
+    const viteTask = await viteConfigurationGenerator(tree, {
+      uiFramework: 'vue',
+      project: normalizedOptions.projectName,
+      newProject: true,
+      // includeVitest: options.unitTestRunner === 'vitest',
+    });
+    tasks.push(viteTask);
+  }
+
+  // if (options.bundler !== 'vite' && options.unitTestRunner === 'vitest') {
+  //   const { vitestGenerator } = ensurePackage('@nrwl/vite', viteVersion);
+
+  //   const vitestTask = await vitestGenerator(tree, {
+  //     uiFramework: 'vue',
+  //     coverageProvider: 'c8',
+  //     project: normalizedOptions.projectName,
+  //   });
+  //   tasks.push(vitestTask);
+  // }
+
+  // vite end
 
   const preSet = listPresetConfig();
 
@@ -34,5 +86,5 @@ export default async function (
 
   await formatFiles(tree);
 
-  return runTasksInSerial(...task);
+  return runTasksInSerial(...tasks);
 }
