@@ -7,7 +7,7 @@
     "e2e": {
       "executor": "@nrwl/nx-plugin:e2e",
       "options": {
-        "target": "vue-boot:build",
+        "target": "vue-nx-boot:build",
         "jestConfig": "apps/vue-boot-e2e/jest.config.ts"
       }
     },
@@ -20,5 +20,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["vue-boot"]
+  "implicitDependencies": ["vue-nx-boot"]
 }
