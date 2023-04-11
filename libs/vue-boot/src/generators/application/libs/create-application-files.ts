@@ -25,6 +25,7 @@ export function createApplicationFiles(host: Tree, options: NormalizedSchema) {
     ...options,
     tpl: '',
     offsetFromRoot: offsetFromRoot(options.appProjectRoot),
+    isTypeScript: options.type === 'ts',
   };
 
   generateFiles(
@@ -64,6 +65,7 @@ export function createApplicationFiles(host: Tree, options: NormalizedSchema) {
     toJS(host);
   }
 
+  // 创建tsconfig.json
   createTsConfig(
     host,
     options.appProjectRoot,

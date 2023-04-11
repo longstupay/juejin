@@ -24,6 +24,8 @@ import { createApplicationFiles } from './libs/create-application-files';
 import { addProject } from './libs/add-project';
 import { viteVersion } from '../../utils/versions';
 import viteConfigurationGenerator from '../viteconfiguration/generator';
+import { addTypescript } from './libs/add-typescript';
+import { installCommonDependencies } from './libs/install-common-dependencies';
 
 export default async function (
   tree: Tree,
@@ -57,6 +59,12 @@ export default async function (
       );
     }
 
+    const stylePreprocessorTask = installCommonDependencies(
+      tree,
+      normalizedOptions
+    );
+    tasks.push(stylePreprocessorTask);
+
     const viteTask = await viteConfigurationGenerator(tree, {
       uiFramework: 'vue',
       project: normalizedOptions.projectName,
@@ -64,6 +72,11 @@ export default async function (
       // includeVitest: options.unitTestRunner === 'vitest',
     });
     tasks.push(viteTask);
+
+    if (options.type === 'ts') {
+      const viteTsTask = addTypescript(tree);
+      tasks.push(viteTsTask);
+    }
   }
 
   // if (options.bundler !== 'vite' && options.unitTestRunner === 'vitest') {
@@ -84,6 +97,10 @@ export default async function (
   const preSetListFromPrompt = await createPrompt(preSet);
   console.log(preSetListFromPrompt);
 
+  if (options.type === 'js') {
+    tree.delete(`${normalizedOptions.appProjectRoot}/tsconfig.json`);
+    tree.delete(`${normalizedOptions.appProjectRoot}/tsconfig.app.json`);
+  }
   await formatFiles(tree);
 
   return runTasksInSerial(...tasks);

@@ -4,5 +4,5 @@ export interface InitGeneratorSchema {
   skipFormat?: boolean;
   skipPackageJson?: boolean;
   skipBabelConfig?: boolean;
-  js?: boolean;
+  type?: 'ts' | 'js';
 }

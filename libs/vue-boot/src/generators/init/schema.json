@@ -32,10 +32,11 @@
       "type": "boolean",
       "default": false
     },
-    "js": {
-      "type": "boolean",
-      "default": false,
-      "description": "Use JavaScript instead of TypeScript"
+    "type": {
+      "description": "Use JavaScript instead of TypeScript",
+      "enum": ["js", "ts"],
+      "type": "string",
+      "default": "ts"
     }
   }
 }

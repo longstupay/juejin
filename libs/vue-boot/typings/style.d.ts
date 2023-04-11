@@ -1,1 +1,1 @@
-export type SupportedStyles = 'css' | 'scss' | 'less';
+export type SupportedStyles = 'css' | 'scss' | 'less' | 'styl';

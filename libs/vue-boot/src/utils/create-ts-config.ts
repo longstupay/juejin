@@ -17,24 +17,34 @@ export function createTsConfig(
 ) {
   const json = {
     compilerOptions: {
-      jsx: 'react-jsx',
-      allowJs: false,
-      esModuleInterop: false,
-      allowSyntheticDefaultImports: true,
+      baseUrl: '.',
+      paths: {
+        '@/*': ['./src/*'],
+      },
+      lib: [
+        // Should target at least ES2016 in Vue 3
+        // Support for newer versions of language built-ins are
+        // left for the users to include, because that would require:
+        //   - either the project doesn't need to support older versions of browsers;
+        //   - or the project has properly included the necessary polyfills.
+        'ES2016',
+
+        'DOM',
+        'DOM.Iterable',
+
+        // No `ScriptHost` because Vue 3 dropped support for IE
+      ],
       strict: options.strict,
     },
     files: [],
-    include: [],
+    include: ['env.d.ts', 'src/**/*', 'src/**/*.vue'],
     references: [
       {
         path: type === 'app' ? './tsconfig.app.json' : './tsconfig.lib.json',
       },
     ],
+    extends: [''],
   } as any;
-
-  if (options.style === '@emotion/styled') {
-    json.compilerOptions.jsxImportSource = '@emotion/react';
-  }
 
   if (options.bundler === 'vite') {
     json.compilerOptions.types =
@@ -52,7 +62,7 @@ export function createTsConfig(
     };
     json.exclude = ['node_modules', 'tmp'];
   } else {
-    json.extends = relativePathToRootTsConfig;
+    json.extends = [relativePathToRootTsConfig];
   }
 
   writeJson(host, `${projectRoot}/tsconfig.json`, json);
@@ -62,6 +72,7 @@ export function createTsConfig(
     updateJson(host, tsconfigProjectPath, (json) => {
       json.compilerOptions ??= {};
 
+      //确保'node'和'vite/client'类型被包含在json.compilerOptions.types数组中，而不添加重复的类型。
       const types = new Set(json.compilerOptions.types ?? []);
       types.add('node');
       types.add('vite/client');

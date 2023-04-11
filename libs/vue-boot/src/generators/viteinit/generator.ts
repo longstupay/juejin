@@ -16,8 +16,6 @@ import {
 } from '../../utils/versions';
 import { VitevueGeneratorSchema } from './schema';
 
-import { initGenerator as jsInitGenerator } from '@nrwl/js';
-
 function checkDependenciesInstalled(
   host: Tree,
   schema: VitevueGeneratorSchema
@@ -87,13 +85,6 @@ export async function viteInitGenerator(
   moveToDevDependencies(tree);
   // createVitestConfig(tree);
   const tasks = [];
-
-  tasks.push(
-    await jsInitGenerator(tree, {
-      ...schema,
-      skipFormat: true,
-    })
-  );
 
   tasks.push(checkDependenciesInstalled(tree, schema));
   return runTasksInSerial(...tasks);
