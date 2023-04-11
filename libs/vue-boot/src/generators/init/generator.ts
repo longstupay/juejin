@@ -39,7 +39,8 @@ function setDefault(host: Tree) {
 }
 
 function updateDependencies(host: Tree) {
-  removeDependenciesFromPackageJson(host, ['vue'], ['vite']);
+  // 国内使用，npm配置不对很可能造成安装超时
+  // removeDependenciesFromPackageJson(host, ['vue'], ['vite']);
 
   const dependencies = {
     vue: vueVersion,

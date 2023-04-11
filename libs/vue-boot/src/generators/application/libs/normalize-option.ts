@@ -13,7 +13,7 @@ export function normalizeOptions(
     : name;
   const projectName = appProjectDirectory.replace(new RegExp('/', 'g'), '-');
   const appProjectRoot = `${
-    getWorkspaceLayout(tree).libsDir
+    getWorkspaceLayout(tree).appsDir
   }/${appProjectDirectory}`;
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())

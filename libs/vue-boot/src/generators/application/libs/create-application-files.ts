@@ -37,7 +37,15 @@ export function createApplicationFiles(host: Tree, options: NormalizedSchema) {
   // g index.html
   generateFiles(
     host,
-    join(__dirname, '../files/root-file'),
+    join(__dirname, '../files/html-file'),
+    options.appProjectRoot,
+    templateVariables
+  );
+
+  // g vite.config.ts
+  generateFiles(
+    host,
+    join(__dirname, '../files/vite-conf'),
     options.appProjectRoot,
     templateVariables
   );
