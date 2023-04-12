@@ -39,7 +39,7 @@ function setDefault(host: Tree) {
 }
 
 function updateDependencies(host: Tree) {
-  // 国内使用，npm配置不对很可能造成安装超时
+  // 国内使用，npm配置不对很可能造成安装超时,原因可能是删除依赖后，registry地址配置原因
   // removeDependenciesFromPackageJson(host, ['vue'], ['vite']);
 
   const dependencies = {
@@ -66,6 +66,7 @@ export async function vueInitGenerator(
   });
   tasks.push(jsInitTask);
 
+  // 统一在init生成器中配置测试框架，而不是viteinit 或 webpackinit配置测试框架
   if (!schema.e2eTestRunner || schema.e2eTestRunner === 'cypress') {
     ensurePackage('@nrwl/cypress', nxVersion);
     const { cypressInitGenerator } = await import(

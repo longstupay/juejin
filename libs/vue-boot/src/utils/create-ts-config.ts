@@ -37,7 +37,7 @@ export function createTsConfig(
       strict: options.strict,
     },
     files: [],
-    include: ['env.d.ts', 'src/**/*', 'src/**/*.vue'],
+    include: ['src/**/*', 'src/**/*.vue'],
     references: [
       {
         path: type === 'app' ? './tsconfig.app.json' : './tsconfig.lib.json',

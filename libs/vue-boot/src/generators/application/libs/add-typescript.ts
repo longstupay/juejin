@@ -1,6 +1,6 @@
 import type { GeneratorCallback, Tree } from '@nrwl/devkit';
 import { addDependenciesToPackageJson } from '@nrwl/devkit';
-import { vueTscVersion } from '../../../utils/versions';
+import { typeScriptVersion } from '../../../utils/versions';
 
 export function addTypescript(tree: Tree): GeneratorCallback {
   return addDependenciesToPackageJson(
@@ -8,7 +8,7 @@ export function addTypescript(tree: Tree): GeneratorCallback {
     {},
     {
       // '@vue/tsconfig': vueTsConfigVersion,
-      'vue-tsc': vueTscVersion,
+      typescript: typeScriptVersion,
     }
   );
 }

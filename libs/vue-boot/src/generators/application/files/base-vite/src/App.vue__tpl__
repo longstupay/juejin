@@ -3,8 +3,13 @@
 <% } else { %>
   <script setup>
 <% } %>
+
+<% if(router) { %>
+import { RouterLink, RouterView } from 'vue-router'
+<% } else { %>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<% } %>
+
 </script>
 
 <template>
@@ -16,12 +21,21 @@ import TheWelcome from './components/TheWelcome.vue'
         <h3>Running the `Vue-Nx-TS` template</h3>
       <% } %>
       <HelloWorld msg="You did it!" />
+      <% if(router) { %>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+      <% } %>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  </header>
+    <% if(router) { %>
+      <main>
+      <RouterView />
+      </main>
+    <% } %>
+
 </template>
 
 <style scoped>

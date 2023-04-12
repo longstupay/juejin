@@ -98,10 +98,12 @@
     "@emotion/styled": "11.10.6",
     "@swc/helpers": "~0.4.11",
     "next": "13.1.1",
+    "pinia": "^2.0.34",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "4"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

@@ -3,6 +3,7 @@ import type { Linter } from '@nrwl/linter';
 
 export interface ApplicationGeneratorSchema {
   name: string;
+  backend: boolean;
   tags?: string;
   directory?: string;
   style?: SupportedStyles | 'none';

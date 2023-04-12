@@ -92,7 +92,24 @@
     "unitTestRunner": {
       "type": "string",
       "description": "Test runer to use for unit test",
-      "enum": ["jest", "vitest", "none"],
+      "x-prompt": {
+        "message": "Which test runner would you like to use for unit tests?",
+        "type": "list",
+        "items": [
+          {
+            "value": "jest",
+            "label": "Jest"
+          },
+          {
+            "value": "vitest",
+            "label": "Vitest"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
       "default": "jest"
     },
     "type": {
@@ -114,6 +131,15 @@
       },
       "default": "ts"
     },
+    "backend": {
+      "type": "boolean",
+      "description": "Create a backend application for Vue applications",
+      "default": false,
+      "x-prompt": {
+        "message": "Would you like to create a backend application?",
+        "type": "confirm"
+      }
+    },
     "skipPackageJson": {
       "type": "boolean",
       "default": false,
@@ -123,7 +149,7 @@
     "bundler": {
       "type": "string",
       "description": "The bundler to use for building the application.",
-      "enum": ["vite"],
+      "enum": ["vite", "webpack"],
       "default": "vite"
     }
   },

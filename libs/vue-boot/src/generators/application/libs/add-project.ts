@@ -20,7 +20,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
     },
     configurations: {
       development: {
-        outputPath: options.appProjectRoot,
+        outputPath: joinPathFragments('dist', options.appProjectRoot),
       },
       production: {},
     },

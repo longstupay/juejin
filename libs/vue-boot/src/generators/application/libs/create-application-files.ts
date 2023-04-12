@@ -5,16 +5,16 @@ import { createTsConfig } from '../../../utils/create-ts-config';
 import type { NormalizedSchema } from '../schema';
 
 export function createApplicationFiles(host: Tree, options: NormalizedSchema) {
-  let styleSolutionSpecificAppFiles: string;
-  if (options.style === 'css') {
-    styleSolutionSpecificAppFiles = '../files/css-vite';
-  } else if (options.style === 'scss') {
-    styleSolutionSpecificAppFiles = '../files/scss-vite';
-  } else if (options.style === 'less') {
-    styleSolutionSpecificAppFiles = '../files/less-vite';
-  } else {
-    styleSolutionSpecificAppFiles = '../files/css-vite';
-  }
+  // let styleSolutionSpecificAppFiles: string;
+  // if (options.style === 'css') {
+  //   styleSolutionSpecificAppFiles = '../files/css-vite';
+  // } else if (options.style === 'scss') {
+  //   styleSolutionSpecificAppFiles = '../files/scss-vite';
+  // } else if (options.style === 'less') {
+  //   styleSolutionSpecificAppFiles = '../files/less-vite';
+  // } else {
+  //   styleSolutionSpecificAppFiles = '../files/css-vite';
+  // }
 
   const relativePathToRootTsConfig = getRelativePathToRootTsConfig(
     host,
@@ -26,6 +26,8 @@ export function createApplicationFiles(host: Tree, options: NormalizedSchema) {
     tpl: '',
     offsetFromRoot: offsetFromRoot(options.appProjectRoot),
     isTypeScript: options.type === 'ts',
+    router: true,
+    pinia: true,
   };
 
   generateFiles(
@@ -52,14 +54,14 @@ export function createApplicationFiles(host: Tree, options: NormalizedSchema) {
   );
 
   // g style sheet files
-  if (options.style !== 'none') {
-    generateFiles(
-      host,
-      join(__dirname, styleSolutionSpecificAppFiles),
-      options.appProjectRoot,
-      templateVariables
-    );
-  }
+  // if (options.style !== 'none') {
+  //   generateFiles(
+  //     host,
+  //     join(__dirname, styleSolutionSpecificAppFiles),
+  //     options.appProjectRoot,
+  //     templateVariables
+  //   );
+  // }
 
   if (options.type === 'js') {
     toJS(host);

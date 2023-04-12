@@ -15,7 +15,7 @@ import type { Tree, GeneratorCallback } from '@nrwl/devkit';
 import * as path from 'path';
 import type { ApplicationGeneratorSchema, NormalizedSchema } from './schema';
 
-import { createPrompt } from './libs/prompt';
+import { createPrompt, createSelectBackend } from './libs/prompt';
 
 import normalizeOptions from './libs/normalize-option';
 import { listPresetConfig } from './libs/list-preset-config';
@@ -26,6 +26,7 @@ import { viteVersion } from '../../utils/versions';
 import viteConfigurationGenerator from '../viteconfiguration/generator';
 import { addTypescript } from './libs/add-typescript';
 import { installCommonDependencies } from './libs/install-common-dependencies';
+import { presetFile } from './libs/preset-file';
 
 export default async function (
   tree: Tree,
@@ -94,9 +95,20 @@ export default async function (
 
   const preSet = listPresetConfig();
 
-  const preSetListFromPrompt = await createPrompt(preSet);
-  console.log(preSetListFromPrompt);
+  const backList = ['node', 'nest', 'express', 'midway'];
 
+  if (options.backend) {
+    await createSelectBackend(backList);
+  }
+
+  const { preSetupConfig } = await createPrompt(preSet);
+  // console.log(preSetupConfig);
+  presetFile(tree, {
+    ...normalizedOptions,
+    router: true,
+    tailwind: true,
+    pinia: true,
+  });
   if (options.type === 'js') {
     tree.delete(`${normalizedOptions.appProjectRoot}/tsconfig.json`);
     tree.delete(`${normalizedOptions.appProjectRoot}/tsconfig.app.json`);
