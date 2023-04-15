@@ -6,10 +6,8 @@
 
 <% if(router) { %>
 import { RouterLink, RouterView } from 'vue-router'
-<% } else { %>
+<% } else %>
 import HelloWorld from './components/HelloWorld.vue'
-<% } %>
-
 </script>
 
 <template>
@@ -24,6 +22,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <% if(router) { %>
       <nav>
         <RouterLink to="/">Home</RouterLink>
+         | 
         <RouterLink to="/about">About</RouterLink>
       </nav>
       <% } %>
