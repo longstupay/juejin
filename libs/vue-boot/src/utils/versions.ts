@@ -20,3 +20,10 @@ export const typeScriptVersion = '4.9.5';
 // vue preset
 export const piniaVersion = '^2.0.34';
 export const vueRouterVersion = '^4.1.6';
+
+// rollup plugins (if needed)
+export const rollupPluginUrlVersion = '^7.0.0';
+export const svgrRollupVersion = '^6.1.2';
+
+// SWC
+export const swcCoreVersion = '^1.2.173';

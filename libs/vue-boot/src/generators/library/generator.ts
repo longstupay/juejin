@@ -13,18 +13,18 @@ import {
 import { updateRootTsConfig } from '@nrwl/js';
 
 import { nxVersion } from '../../utils/versions';
-import componentGenerator from '../component/component';
-import initGenerator from '../init/init';
+import componentGenerator from '../component/generator';
+import initGenerator from '../init/generator';
 import { Schema } from './schema';
-import { updateJestConfigContent } from '../../utils/jest-utils';
 import { normalizeOptions } from './lib/normalize-options';
 import { addRollupBuildTarget } from './lib/add-rollup-build-target';
-import { addLinting } from './lib/add-linting';
-import { updateAppRoutes } from './lib/update-app-routes';
+// import { addLinting } from './lib/add-linting';
+// import { updateAppRoutes } from './lib/update-app-routes';
 import { createFiles } from './lib/create-files';
 import { extractTsConfigBase } from '../../utils/create-ts-config';
 import { installCommonDependencies } from './lib/install-common-dependencies';
-import { setDefaults } from './lib/set-defaults';
+import viteInitGenerator from '../viteinit/generator';
+// import { setDefaults } from './lib/set-defaults';
 
 export async function libraryGenerator(host: Tree, schema: Schema) {
   const tasks: GeneratorCallback[] = [];
@@ -39,12 +39,12 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
     options.style = 'none';
   }
 
+  // Currently vite configuration for dummies, only install related dependencies, no configuration babel test etc.,
+  // later webpack needs to be expanded
   const initTask = await initGenerator(host, {
     ...options,
     e2eTestRunner: 'none',
     skipFormat: true,
-    skipBabelConfig: options.bundler === 'vite',
-    skipHelperLibs: options.bundler === 'vite',
   });
   tasks.push(initTask);
 
@@ -56,66 +56,20 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
     targets: {},
   });
 
-  const lintTask = await addLinting(host, options);
-  tasks.push(lintTask);
+  // const lintTask = await addLinting(host, options);
+  // tasks.push(lintTask);
 
   createFiles(host, options);
 
   // Set up build target
   if (options.buildable && options.bundler === 'vite') {
-    const { viteConfigurationGenerator } = ensurePackage(
-      '@nrwl/vite',
-      nxVersion
-    );
-    const viteTask = await viteConfigurationGenerator(host, {
-      uiFramework: 'react',
-      project: options.name,
-      newProject: true,
-      includeLib: true,
-      inSourceTests: options.inSourceTests,
-      includeVitest: options.unitTestRunner === 'vitest',
+    const viteTask = await viteInitGenerator(host, {
+      uiFramework: 'vue',
     });
     tasks.push(viteTask);
   } else if (options.buildable && options.bundler === 'rollup') {
     const rollupTask = await addRollupBuildTarget(host, options);
     tasks.push(rollupTask);
-  }
-
-  // Set up test target
-  if (options.unitTestRunner === 'jest') {
-    const { jestProjectGenerator } = ensurePackage('@nrwl/jest', nxVersion);
-
-    const jestTask = await jestProjectGenerator(host, {
-      ...options,
-      project: options.name,
-      setupFile: 'none',
-      supportTsx: true,
-      skipSerializers: true,
-      compiler: options.compiler,
-    });
-    tasks.push(jestTask);
-    const jestConfigPath = joinPathFragments(
-      options.projectRoot,
-      options.js ? 'jest.config.js' : 'jest.config.ts'
-    );
-    if (options.compiler === 'babel' && host.exists(jestConfigPath)) {
-      const updatedContent = updateJestConfigContent(
-        host.read(jestConfigPath, 'utf-8')
-      );
-      host.write(jestConfigPath, updatedContent);
-    }
-  } else if (
-    options.unitTestRunner === 'vitest' &&
-    options.bundler !== 'vite' // tests are already configured if bundler is vite
-  ) {
-    const { vitestGenerator } = ensurePackage('@nrwl/vite', nxVersion);
-    const vitestTask = await vitestGenerator(host, {
-      uiFramework: 'react',
-      project: options.name,
-      coverageProvider: 'c8',
-      inSourceTests: options.inSourceTests,
-    });
-    tasks.push(vitestTask);
   }
 
   if (options.component) {
@@ -131,7 +85,6 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
       routing: options.routing,
       js: options.js,
       pascalCaseFiles: options.pascalCaseFiles,
-      inSourceTests: options.inSourceTests,
     });
     tasks.push(componentTask);
   }
@@ -148,9 +101,9 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
     tasks.push(installReactTask);
   }
 
-  const routeTask = updateAppRoutes(host, options);
-  tasks.push(routeTask);
-  setDefaults(host, options);
+  // const routeTask = updateAppRoutes(host, options);
+  // tasks.push(routeTask);
+  // setDefaults(host, options);
 
   extractTsConfigBase(host);
   if (!options.skipTsConfig) {

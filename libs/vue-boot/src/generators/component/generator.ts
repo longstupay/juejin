@@ -14,7 +14,11 @@ import { normalizeOptions } from './lib/normalize-options';
 
 export async function componentGenerator(host: Tree, schema: Schema) {
   const options = await normalizeOptions(host, schema);
-  createComponentFiles(host, options);
+  createComponentFiles(host, {
+    ...options,
+    skipTests: true,
+    hasStyles: false,
+  });
 
   const tasks: GeneratorCallback[] = [];
 

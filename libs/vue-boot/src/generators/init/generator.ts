@@ -11,32 +11,27 @@ import {
 } from '@nrwl/devkit';
 
 import { initGenerator as jsInitGenerator } from '@nrwl/js';
-import {
-  nxVersion,
-  typesNodeVersion,
-  viteVersion,
-  vueVersion,
-} from '../../utils/versions';
+import { nxVersion, typesNodeVersion, vueVersion } from '../../utils/versions';
 
 import { InitGeneratorSchema } from './schema';
 
-function setDefault(host: Tree) {
-  const workspace = readNxJson(host);
+// function setDefault(host: Tree) {
+//   const workspace = readNxJson(host);
 
-  workspace.generators = workspace.generators || {};
-  const reactGenerators = workspace.generators['@longstupay/vue-nx-boot'] || {};
-  const generators = {
-    ...workspace.generators,
-    '@longstupay/vue-nx-boot': {
-      ...reactGenerators,
-      application: {
-        ...reactGenerators.application,
-      },
-    },
-  };
+//   workspace.generators = workspace.generators || {};
+//   const reactGenerators = workspace.generators['@longstupay/vue-nx-boot'] || {};
+//   const generators = {
+//     ...workspace.generators,
+//     '@longstupay/vue-nx-boot': {
+//       ...reactGenerators,
+//       application: {
+//         ...reactGenerators.application,
+//       },
+//     },
+//   };
 
-  updateNxJson(host, { ...workspace, generators });
-}
+//   updateNxJson(host, { ...workspace, generators });
+// }
 
 function updateDependencies(host: Tree) {
   // 国内使用，npm配置不对很可能造成安装超时,原因可能是删除依赖后，registry地址配置原因
@@ -52,6 +47,12 @@ function updateDependencies(host: Tree) {
   });
 }
 
+/**
+ * install vve dependencies and initial js lib task
+ * @param host 
+ * @param schema 
+ * @returns 
+ */
 export async function vueInitGenerator(
   host: Tree,
   schema: InitGeneratorSchema

@@ -8,7 +8,6 @@ export interface Schema {
   compiler?: 'babel' | 'swc';
   component?: boolean;
   directory?: string;
-  globalCss?: boolean;
   importPath?: string;
   inSourceTests?: boolean;
   js?: boolean;

@@ -92,20 +92,14 @@
     },
     "pascalCaseFiles": {
       "type": "boolean",
-      "description": "Use pascal case component file name (e.g. `App.tsx`).",
+      "description": "Use pascal case component file name (e.g. `App.vue`).",
       "alias": "P",
       "default": false
     },
     "pascalCaseDirectory": {
       "type": "boolean",
-      "description": "Use pascal case directory name (e.g. `App/App.tsx`).",
+      "description": "Use pascal case directory name (e.g. `App/App.vue`).",
       "alias": "R",
-      "default": false
-    },
-    "classComponent": {
-      "type": "boolean",
-      "alias": "C",
-      "description": "Use class components instead of functional component.",
       "default": false
     },
     "routing": {

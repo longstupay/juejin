@@ -36,7 +36,6 @@ export async function normalizeOptions(
     );
   }
 
-  options.classComponent = options.classComponent ?? false;
   options.routing = options.routing ?? false;
 
   return {
@@ -55,16 +54,15 @@ async function getDirectory(host: Tree, options: Schema) {
     options.pascalCaseDirectory === true
       ? genNames.className
       : genNames.fileName;
-  const workspace = getProjects(host);
+
   let baseDir: string;
+  // If the user specified a directory, use that.
   if (options.directory) {
     baseDir = options.directory;
   } else {
-    baseDir =
-      workspace.get(options.project).projectType === 'application'
-        ? 'app'
-        : 'lib';
+    baseDir = 'components';
   }
+
   return options.flat ? baseDir : joinPathFragments(baseDir, fileName);
 }
 
