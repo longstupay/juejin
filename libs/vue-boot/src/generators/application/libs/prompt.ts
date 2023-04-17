@@ -8,10 +8,26 @@ export interface preSetDefinition {
 }
 
 export async function createPrompt(
+  hasBack: boolean,
+  backendList: readonly string[],
   preSetupConfig: readonly preSetDefinition[]
 ): Promise<{ preSetupConfig: preSetName[] }> {
-  return inquirer.prompt({
-    // The name to use when storing the answer in the answers hash. If the name contains periods, it will define a path in the answers hash.
+  const questions = [];
+  
+  // 添加backend选项
+  if (hasBack) {
+    questions.push({
+      name: 'backend',
+      type: 'list',
+      message: 'Which backend ?',
+      choices: backendList.map((backend) => ({
+        name: backend,
+      })),
+    });
+  }
+
+  // 添加preSetupConfig选项
+  questions.push({
     name: 'preSetupConfig',
     type: 'checkbox',
     message: 'Which startup pre-configuration ?',
@@ -20,17 +36,18 @@ export async function createPrompt(
       checked: true,
     })),
   });
+  return inquirer.prompt(questions);
 }
 
-export async function createSelectBackend(
-  backendList: readonly string[]
-): Promise<{ backend: string }> {
-  return inquirer.prompt({
-    name: 'backend',
-    type: 'list',
-    message: 'Which backend ?',
-    choices: backendList.map((backend) => ({
-      name: backend,
-    })),
-  });
-} 
+// export async function createSelectBackend(
+//   backendList: readonly string[]
+// ): Promise<{ backend: string }> {
+//   return inquirer.prompt({
+//     name: 'backend',
+//     type: 'list',
+//     message: 'Which backend ?',
+//     choices: backendList.map((backend) => ({
+//       name: backend,
+//     })),
+//   });
+// } 

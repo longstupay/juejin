@@ -15,7 +15,7 @@ import type { Tree, GeneratorCallback } from '@nrwl/devkit';
 import * as path from 'path';
 import type { ApplicationGeneratorSchema, NormalizedSchema } from './schema';
 
-import { createPrompt, createSelectBackend } from './libs/prompt';
+import { createPrompt } from './libs/prompt';
 
 import normalizeOptions from './libs/normalize-option';
 import { listPresetConfig } from './libs/list-preset-config';
@@ -96,12 +96,13 @@ export default async function (
   const preSet = listPresetConfig();
 
   const backList = ['node', 'nest', 'express', 'midway'];
+  
 
-  if (options.backend) {
-    await createSelectBackend(backList);
-  }
-
-  const { preSetupConfig } = await createPrompt(preSet);
+  const { preSetupConfig } = await createPrompt(
+    options.backend,
+    backList,
+    preSet
+  );
   // console.log(preSetupConfig);
   presetFile(tree, {
     ...normalizedOptions,

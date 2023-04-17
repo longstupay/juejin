@@ -1,7 +1,6 @@
 import {
   addProjectConfiguration,
   convertNxGenerator,
-  ensurePackage,
   formatFiles,
   GeneratorCallback,
   joinPathFragments,
@@ -12,8 +11,6 @@ import {
 
 import { updateRootTsConfig } from '@nrwl/js';
 
-import { nxVersion } from '../../utils/versions';
-import componentGenerator from '../component/generator';
 import initGenerator from '../init/generator';
 import { Schema } from './schema';
 import { normalizeOptions } from './lib/normalize-options';
@@ -24,6 +21,7 @@ import { createFiles } from './lib/create-files';
 import { extractTsConfigBase } from '../../utils/create-ts-config';
 import { installCommonDependencies } from './lib/install-common-dependencies';
 import viteInitGenerator from '../viteinit/generator';
+import setupTailwindGenerator from '../setup-tailwind/generator';
 // import { setDefaults } from './lib/set-defaults';
 
 export async function libraryGenerator(host: Tree, schema: Schema) {
@@ -73,18 +71,9 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
   }
 
   if (options.component) {
-    const componentTask = await componentGenerator(host, {
-      name: options.name,
+    const componentTask = await setupTailwindGenerator(host, {
+      ...options,
       project: options.name,
-      flat: true,
-      style: options.style,
-      skipTests:
-        options.unitTestRunner === 'none' ||
-        (options.unitTestRunner === 'vitest' && options.inSourceTests == true),
-      export: true,
-      routing: options.routing,
-      js: options.js,
-      pascalCaseFiles: options.pascalCaseFiles,
     });
     tasks.push(componentTask);
   }

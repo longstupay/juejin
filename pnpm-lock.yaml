@@ -85,6 +85,7 @@ specifiers:
   react-dom: 18.2.0
   react-refresh: ^0.10.0
   react-test-renderer: 18.2.0
+  rollup: ^3.20.3
   tailwindcss: 3.2.7
   ts-jest: ^29.0.5
   ts-node: 10.9.1
@@ -137,7 +138,7 @@ devDependencies:
   '@nrwl/workspace': 15.9.2_atz3j6i5bpblg5lpucggigozke
   '@nx-plus/vue': 15.0.0-rc.0_borvxked6w7mereajyx2imvima
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_rr3fsn7eim5qh4wlzzxxojzvti
-  '@rollup/plugin-url': 7.0.0_rollup@2.79.1
+  '@rollup/plugin-url': 7.0.0_rollup@3.20.3
   '@storybook/addon-essentials': 6.5.16_q4k3punooljzobgyxhve7ltdoq
   '@storybook/builder-vite': 0.2.7_on574lvylzedenj23j7lpw2ww4
   '@storybook/builder-webpack5': 6.5.16_py4zfnvaluq4o5mmmw6qymkh4m
@@ -187,6 +188,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.2.7_prettier@2.8.7
   react-refresh: 0.10.0
   react-test-renderer: 18.2.0_react@18.2.0
+  rollup: 3.20.3
   tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
   ts-jest: 29.1.0_qhx5mtslftu754dpj54iqycqzm
   ts-node: 10.9.1_6lufg45cy7dn7pwmyflsujuwqe
@@ -4940,7 +4942,7 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-url/7.0.0_rollup@2.79.1:
+  /@rollup/plugin-url/7.0.0_rollup@3.20.3:
     resolution: {integrity: sha512-cIWcEObrmEPAU8q8NluGWlCPlQDuoSKvkyI3eOFO4fx6W02mLNj4ZEiUT0X2mKMIvQzoWL1feEK9d1yr1ICgrw==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -4949,7 +4951,7 @@ packages:
       '@rollup/pluginutils': 4.2.1
       make-dir: 3.1.0
       mime: 2.6.0
-      rollup: 2.79.1
+      rollup: 3.20.3
     dev: true
 
   /@rollup/pluginutils/3.1.0_rollup@2.79.1:
@@ -19973,8 +19975,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup/3.20.2:
-    resolution: {integrity: sha512-3zwkBQl7Ai7MFYQE0y1MeQ15+9jsi7XxfrqwTb/9EK8D9C9+//EBR4M+CuA1KODRaNbFez/lWxA5vhEGZp4MUg==}
+  /rollup/3.20.3:
+    resolution: {integrity: sha512-u6/O1X42CAZ79rbk+smyONJQLTpwFBL7InpRa/AVWia5lq60w5J/PUsVHCOgSolN0X9R2GjQ41fZm3x28Hk1lA==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -22326,7 +22328,7 @@ packages:
       less: 4.1.3
       postcss: 8.4.21
       resolve: 1.22.2
-      rollup: 3.20.2
+      rollup: 3.20.3
       stylus: 0.59.0
     optionalDependencies:
       fsevents: 2.3.2

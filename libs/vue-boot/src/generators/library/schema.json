@@ -118,7 +118,7 @@
     },
     "component": {
       "type": "boolean",
-      "description": "Generate a default component.",
+      "description": "Generate a default component with tailwind",
       "default": true
     },
     "js": {

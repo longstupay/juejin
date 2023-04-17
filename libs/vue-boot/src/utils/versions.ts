@@ -27,3 +27,8 @@ export const svgrRollupVersion = '^6.1.2';
 
 // SWC
 export const swcCoreVersion = '^1.2.173';
+
+//tailwindcss
+export const  autoprefixerVersion ="^10.4.14";
+export const  postcssVersion = "^8.4.21";
+export const tailwindcssVersion = "^3.3.1";

@@ -37,7 +37,8 @@ export async function addRollupBuildTarget(
   const { libsDir } = getWorkspaceLayout(host);
   const external: string[] = [];
 
-  // 使用jsx/tsx时需要添加外置依赖
+  // 使用jsx/tsx时可能需要添加外置依赖
+  external.push('vue');
 
   targets.build = {
     executor: '@nrwl/rollup:rollup',
@@ -51,7 +52,8 @@ export async function addRollupBuildTarget(
       project: `${options.projectRoot}/package.json`,
       entryFile: maybeJs(options, `${options.projectRoot}/src/index.ts`),
       external,
-      rollupConfig: `@nrwl/react/plugins/bundle-rollup`,
+      // 这里可能需要预设值rollup
+      rollupConfig: `@longstupay/vue-nx-boot/plugins/bundle-rollup`,
       compiler: options.compiler ?? 'babel',
       assets: [
         {

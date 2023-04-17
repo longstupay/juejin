@@ -32,6 +32,11 @@
       "factory": "./src/generators/component/generator",
       "schema": "./src/generators/component/schema.json",
       "description": "component generator"
+    },
+    "setup-tailwind": {
+      "factory": "./src/generators/setup-tailwind/generator",
+      "schema": "./src/generators/setup-tailwind/schema.json",
+      "description": "setup-tailwind generator"
     }
   }
 }

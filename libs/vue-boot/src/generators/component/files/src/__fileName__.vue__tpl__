@@ -5,10 +5,10 @@
 <% } %>
 
 <% if (isTypeScript) { %>
-  export interface <% fileName %>Props {
+  export interface <%= fileName %>Props {
     msg:string;
   }
-  defineProps<<% fileName %>Props>()
+  defineProps<<%= fileName %>Props>()
 <% } else { %>
   defineProps({
     msg: {
@@ -27,7 +27,7 @@
   <div class="text-red-500">
     <p>
       Edit
-      <code>components/<% fileName %>.vue</code> to test HMR
+      <code>components/<%= fileName %>.vue</code> to test HMR
     </p>
   </div>
 </template>

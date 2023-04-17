@@ -11,13 +11,19 @@ export function createComponentFiles(host: Tree, options: NormalizedSchema) {
 
   // const componentTests = getComponentTests(options);
 
-  generateFiles(host, joinPathFragments(__dirname, '../files/src/'), componentDir, {
-    ...options,
-    // componentTests,
-    tpl: '',
-    style: options.style,
-    isTypeScript: options.js ? false : true,
-  });
+  generateFiles(
+    host,
+    joinPathFragments(__dirname, '../files/src/'),
+    componentDir,
+    {
+      ...options,
+      // componentTests,
+      tpl: '',
+      style: options.style,
+      isTypeScript: options.js ? false : true,
+      fileName: options.name,
+    }
+  );
 
   for (const c of host.listChanges()) {
     let deleteFile = false;

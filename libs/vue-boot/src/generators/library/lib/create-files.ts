@@ -21,6 +21,8 @@ export function createFiles(host: Tree, options: NormalizedSchema) {
     ...names(options.name),
     tmpl: '',
     offsetFromRoot: offsetFromRoot(options.projectRoot),
+    tailWind: options.component,
+    style: options.style === 'none' ? 'css' : options.style,
   };
 
   generateFiles(
