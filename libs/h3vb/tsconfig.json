@@ -6,14 +6,13 @@
     },
     "lib": ["ES2016", "DOM", "DOM.Iterable"],
     "strict": true,
-    "module": "esnext",
     "types": ["vite/client"]
   },
   "files": [],
   "include": ["src/**/*", "src/**/*.vue"],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     }
   ],
   "extends": ["../../tsconfig.base.json"]

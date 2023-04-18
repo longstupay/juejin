@@ -22,6 +22,7 @@ import { extractTsConfigBase } from '../../utils/create-ts-config';
 import { installCommonDependencies } from './lib/install-common-dependencies';
 import viteInitGenerator from '../viteinit/generator';
 import setupTailwindGenerator from '../setup-tailwind/generator';
+import { addViteBuildTarget } from './lib/add-vite-build-target';
 // import { setDefaults } from './lib/set-defaults';
 
 export async function libraryGenerator(host: Tree, schema: Schema) {
@@ -36,7 +37,6 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
   if (!options.component) {
     options.style = 'none';
   }
-
   // Currently vite configuration for dummies, only install related dependencies, no configuration babel test etc.,
   // later webpack needs to be expanded
   const initTask = await initGenerator(host, {
@@ -57,6 +57,13 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
   // const lintTask = await addLinting(host, options);
   // tasks.push(lintTask);
 
+  if (options.component) {
+    const componentTask = await setupTailwindGenerator(host, {
+      ...options,
+      project: options.name,
+    });
+    tasks.push(componentTask);
+  }
   createFiles(host, options);
 
   // Set up build target
@@ -64,18 +71,12 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
     const viteTask = await viteInitGenerator(host, {
       uiFramework: 'vue',
     });
+    // 为project.json添加build target
+    addViteBuildTarget(host, options);
     tasks.push(viteTask);
   } else if (options.buildable && options.bundler === 'rollup') {
     const rollupTask = await addRollupBuildTarget(host, options);
     tasks.push(rollupTask);
-  }
-
-  if (options.component) {
-    const componentTask = await setupTailwindGenerator(host, {
-      ...options,
-      project: options.name,
-    });
-    tasks.push(componentTask);
   }
 
   if (options.publishable || options.buildable) {
@@ -93,6 +94,7 @@ export async function libraryGenerator(host: Tree, schema: Schema) {
   // const routeTask = updateAppRoutes(host, options);
   // tasks.push(routeTask);
   // setDefaults(host, options);
+  // 移除ts config
 
   extractTsConfigBase(host);
   if (!options.skipTsConfig) {

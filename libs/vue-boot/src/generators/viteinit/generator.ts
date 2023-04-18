@@ -2,11 +2,9 @@ import {
   addDependenciesToPackageJson,
   convertNxGenerator,
   readJson,
-  readNxJson,
   runTasksInSerial,
   Tree,
   updateJson,
-  updateNxJson,
 } from '@nrwl/devkit';
 
 import {

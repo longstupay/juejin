@@ -33,7 +33,7 @@ export interface NormalizedSchema extends Schema {
   name: string;
   fileName: string;
   projectRoot: string;
-  routePath: string;
+  routePath?: string;
   projectDirectory: string;
   parsedTags: string[];
   appMain?: string;

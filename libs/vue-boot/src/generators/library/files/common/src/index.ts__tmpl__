@@ -1,8 +1,8 @@
 <% if (tailWind) { %>
-import './import-tw.css';
+import './import-tw.<%= style %>';
 
-import MyButton from './components/button/index';
-import MyAlert from './components/alert/index';
+import MyButton from './components/Button/index';
+import MyAlert from './components/Alert/index';
 
 const components = {
   MyButton,
@@ -16,8 +16,8 @@ const install = function (Vue, options) {
   });
 };
 
-export { default as MyButton } from './components/button/index';
-export { default as MyAlert } from './components/alert/index';
+export { default as MyButton } from './components/Button/index';
+export { default as MyAlert } from './components/Alert/index';
 
 export const MycpmUiVueResolver = () => {
   return [

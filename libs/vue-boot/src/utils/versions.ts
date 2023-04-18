@@ -32,3 +32,7 @@ export const swcCoreVersion = '^1.2.173';
 export const  autoprefixerVersion ="^10.4.14";
 export const  postcssVersion = "^8.4.21";
 export const tailwindcssVersion = "^3.3.1";
+
+//vite build
+export const cssInjectedByjs = "^3.1.0"
+export const unpluginVueComponentsVersion = "^0.24.1";

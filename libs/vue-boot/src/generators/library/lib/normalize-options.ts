@@ -73,24 +73,23 @@ export function normalizeOptions(
     normalized.bundler !== 'none' || options.buildable || options.publishable
   );
 
-  if (options.appProject) {
-    const appProjectConfig = getProjects(host).get(options.appProject);
+  // if (options.appProject) {
+  //   const appProjectConfig = getProjects(host).get(options.appProject);
+  //   if (appProjectConfig.projectType !== 'application') {
+  //     throw new Error(
+  //       `appProject expected type of "application" but got "${appProjectConfig.projectType}"`
+  //     );
+  //   }
 
-    if (appProjectConfig.projectType !== 'application') {
-      throw new Error(
-        `appProject expected type of "application" but got "${appProjectConfig.projectType}"`
-      );
-    }
-
-    try {
-      normalized.appMain = appProjectConfig.targets.build.options.main;
-      normalized.appSourceRoot = normalizePath(appProjectConfig.sourceRoot);
-    } catch (e) {
-      throw new Error(
-        `Could not locate project main for ${options.appProject}`
-      );
-    }
-  }
+  //   try {
+  //     normalized.appMain = appProjectConfig.targets.build.options.main;
+  //     normalized.appSourceRoot = normalizePath(appProjectConfig.sourceRoot);
+  //   } catch (e) {
+  //     throw new Error(
+  //       `Could not locate project main for ${options.appProject}`
+  //     );
+  //   }
+  // }
 
   assertValidStyle(normalized.style);
 

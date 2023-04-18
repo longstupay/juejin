@@ -46,8 +46,8 @@ export async function setupTailwindGenerator(
   if (options.component) {
     generateFiles(
       tree,
-      joinPathFragments(__dirname, './files/components'),
-      project.root,
+      joinPathFragments(__dirname, './files/src'),
+      project.sourceRoot,
       {
         tmpl: '',
       }

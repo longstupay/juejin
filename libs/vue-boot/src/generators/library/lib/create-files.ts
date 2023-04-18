@@ -16,6 +16,7 @@ export function createFiles(host: Tree, options: NormalizedSchema) {
     host,
     options.projectRoot
   );
+
   const substitutions = {
     ...options,
     ...names(options.name),
@@ -43,6 +44,17 @@ export function createFiles(host: Tree, options: NormalizedSchema) {
     if (host.exists(joinPathFragments(options.projectRoot, '.babelrc'))) {
       host.delete(joinPathFragments(options.projectRoot, '.babelrc'));
     }
+  }
+
+  if (!options.component) {
+    host.delete(
+      joinPathFragments(
+        options.projectRoot,
+        'src',
+        `import-tw.${options.style === 'none' ? 'css' : options.style}`
+        // `import-tw.${options.style}`
+      )
+    );
   }
 
   if (!options.publishable && !options.buildable) {

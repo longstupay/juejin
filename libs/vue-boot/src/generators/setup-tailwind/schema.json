@@ -38,7 +38,8 @@
     "component": {
       "type": "boolean",
       "description": "Generate a component with tailwind styles.",
-      "x-priority": "internal"
+      "x-priority": "internal",
+      "default": false
     }
   },
   "additionalProperties": false,
