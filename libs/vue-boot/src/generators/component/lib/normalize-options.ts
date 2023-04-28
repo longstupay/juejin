@@ -4,7 +4,7 @@ import {
   joinPathFragments,
   logger,
   names,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { NormalizedSchema, Schema } from '../schema';
 import { assertValidStyle } from '../../../utils/assertion';
 

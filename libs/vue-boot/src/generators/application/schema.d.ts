@@ -1,5 +1,5 @@
 import type { SupportedStyles } from '../../../typings/style';
-import type { Linter } from '@nrwl/linter';
+import type { Linter } from '@nx/linter';
 
 export interface ApplicationGeneratorSchema {
   name: string;

@@ -8,9 +8,9 @@ import {
   names,
   offsetFromRoot,
   runTasksInSerial,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
-import type { Tree, GeneratorCallback } from '@nrwl/devkit';
+import type { Tree, GeneratorCallback } from '@nx/devkit';
 
 import * as path from 'path';
 import type { ApplicationGeneratorSchema, NormalizedSchema } from './schema';
@@ -81,7 +81,7 @@ export default async function (
   }
 
   // if (options.bundler !== 'vite' && options.unitTestRunner === 'vitest') {
-  //   const { vitestGenerator } = ensurePackage('@nrwl/vite', viteVersion);
+  //   const { vitestGenerator } = ensurePackage('@nx/vite', viteVersion);
 
   //   const vitestTask = await vitestGenerator(tree, {
   //     uiFramework: 'vue',
@@ -96,7 +96,6 @@ export default async function (
   const preSet = listPresetConfig();
 
   const backList = ['node', 'nest', 'express', 'midway'];
-  
 
   const { preSetupConfig } = await createPrompt(
     options.backend,

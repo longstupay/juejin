@@ -1,8 +1,8 @@
-import type { Tree } from '@nrwl/devkit';
+import type { Tree } from '@nx/devkit';
 import type { NormalizedSchema } from '../schema';
 
-import { generateFiles, names, offsetFromRoot } from '@nrwl/devkit';
-import { getRelativePathToRootTsConfig } from '@nrwl/js';
+import { generateFiles, names, offsetFromRoot } from '@nx/devkit';
+import { getRelativePathToRootTsConfig } from '@nx/js';
 
 export interface PresetFileOptions extends NormalizedSchema {
   router: boolean;

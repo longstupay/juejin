@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Init",
   "title": "Init Vue Plugin",
   "type": "object",
@@ -8,13 +7,20 @@
     "unitTestRunner": {
       "description": "Adds the specified unit test runner.",
       "type": "string",
-      "enum": ["jest", "vitest", "none"],
+      "enum": [
+        "jest",
+        "vitest",
+        "none"
+      ],
       "default": "jest"
     },
     "e2eTestRunner": {
       "description": "Adds the specified E2E test runner.",
       "type": "string",
-      "enum": ["cypress", "none"],
+      "enum": [
+        "cypress",
+        "none"
+      ],
       "default": "cypress"
     },
     "skipFormat": {
@@ -34,7 +40,10 @@
     },
     "type": {
       "description": "Use JavaScript instead of TypeScript",
-      "enum": ["js", "ts"],
+      "enum": [
+        "js",
+        "ts"
+      ],
       "type": "string",
       "default": "ts"
     }

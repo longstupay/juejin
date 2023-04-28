@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Library",
   "title": "Create a Vue library",
   "description": "Create a Vue library for a Nx workspace",
@@ -38,7 +37,10 @@
         "message": "Which stylesheet format would you like to use?",
         "type": "list",
         "items": [
-          { "value": "css", "label": "CSS" },
+          {
+            "value": "css",
+            "label": "CSS"
+          },
           {
             "value": "scss",
             "label": "SASS(.scss)       [ http://sass-lang.com          ]"
@@ -61,12 +63,19 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["eslint", "none"],
+      "enum": [
+        "eslint",
+        "none"
+      ],
       "default": "eslint"
     },
     "unitTestRunner": {
       "type": "string",
-      "enum": ["jest", "vitest", "none"],
+      "enum": [
+        "jest",
+        "vitest",
+        "none"
+      ],
       "description": "Test runner to use for unit tests.",
       "x-prompt": "What unit test runner should be used?"
     },
@@ -126,6 +135,8 @@
     "js": {
       "type": "boolean",
       "description": "Generate JavaScript files rather than TypeScript files.",
+      "x-priority": "important",
+      "x-prompt": "Generate JavaScript files rather than TypeScript files.",
       "default": false
     },
     "strict": {
@@ -141,14 +152,21 @@
     "bundler": {
       "type": "string",
       "description": "The bundler to use. Choosing 'none' means this library is not buildable.",
-      "enum": ["none", "vite", "rollup"],
+      "enum": [
+        "none",
+        "vite",
+        "rollup"
+      ],
       "default": "none",
       "x-prompt": "Which bundler would you like to use to build the library? Choose 'none' to skip build setup.",
       "x-priority": "important"
     },
     "compiler": {
       "type": "string",
-      "enum": ["babel", "swc"],
+      "enum": [
+        "babel",
+        "swc"
+      ],
       "default": "babel",
       "description": "Which compiler to use. Only applies to `bundler: 'rollup'`."
     },
@@ -164,5 +182,7 @@
       "default": false
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

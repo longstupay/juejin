@@ -4,7 +4,7 @@ import {
   GeneratorCallback,
   runTasksInSerial,
   Tree,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import viteInitGenerator from '../viteinit/generator';
 // import vitestGenerator from '../vitest/vitest-generator';

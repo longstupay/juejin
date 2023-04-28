@@ -1,9 +1,9 @@
 import type * as ts from 'typescript';
 import { findNodes } from 'nx/src/utils/typescript';
 
-import type { StringChange } from '@nrwl/devkit';
-import { ChangeType } from '@nrwl/devkit';
-import { ensureTypescript } from '@nrwl/js/src/utils/typescript/ensure-typescript';
+import type { StringChange } from '@nx/devkit';
+import { ChangeType } from '@nx/devkit';
+import { ensureTypescript } from '@nx/js/src/utils/typescript/ensure-typescript';
 
 let tsModule: typeof import('typescript');
 

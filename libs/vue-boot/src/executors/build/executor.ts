@@ -1,6 +1,6 @@
-import type { ExecutorContext } from '@nrwl/devkit';
+import type { ExecutorContext } from '@nx/devkit';
 import { BuildExecutorSchema } from './schema';
-import { viteBuildExecutor } from '@nrwl/vite/executors';
+import { viteBuildExecutor } from '@nx/vite/executors';
 export default async function runExecutor(
   options: BuildExecutorSchema,
   context: ExecutorContext

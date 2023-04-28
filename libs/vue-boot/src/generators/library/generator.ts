@@ -7,9 +7,9 @@ import {
   runTasksInSerial,
   Tree,
   updateJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
-import { updateRootTsConfig } from '@nrwl/js';
+import { updateRootTsConfig } from '@nx/js';
 
 import initGenerator from '../init/generator';
 import { Schema } from './schema';

@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "SetupTailwind",
   "title": "Configures Tailwind CSS for an application or a buildable/publishable library.",
   "description": "Adds the Tailwind CSS configuration files for a given Vue project and installs, if needed, the packages required for Tailwind CSS to work.",
@@ -43,5 +42,7 @@
     }
   },
   "additionalProperties": false,
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

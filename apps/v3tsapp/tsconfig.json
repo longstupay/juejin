@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "lib": ["ES2016", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "rootDir": ".",
+    "types": ["vite/client"]
+  },
+  "files": [],
+  "include": ["src/**/*", "src/**/*.vue"],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "extends": ["../../tsconfig.base.json"]
+}

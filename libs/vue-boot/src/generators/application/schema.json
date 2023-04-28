@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Application",
   "title": "",
   "type": "object",
@@ -54,7 +53,10 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["eslint", "none"],
+      "enum": [
+        "eslint",
+        "none"
+      ],
       "default": "eslint"
     },
     "skipFormat": {
@@ -65,7 +67,10 @@
     },
     "e2eTestRunner": {
       "type": "string",
-      "enum": ["cypress", "none"],
+      "enum": [
+        "cypress",
+        "none"
+      ],
       "description": "Test runner to use for end to end (E2E) tests.",
       "default": "cypress"
     },
@@ -149,9 +154,14 @@
     "bundler": {
       "type": "string",
       "description": "The bundler to use for building the application.",
-      "enum": ["vite", "webpack"],
+      "enum": [
+        "vite",
+        "webpack"
+      ],
       "default": "vite"
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

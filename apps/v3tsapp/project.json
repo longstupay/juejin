@@ -1,0 +1,50 @@
+{
+  "name": "v3tsapp",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/v3tsapp/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/v3tsapp",
+        "outputPath": "dist/apps/v3tsapp"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "dist/apps/v3tsapp"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "v3tsapp:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "v3tsapp:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "v3tsapp:build:production",
+          "dev": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "v3tsapp:build"
+      },
+      "configurations": {}
+    }
+  },
+  "tags": []
+}

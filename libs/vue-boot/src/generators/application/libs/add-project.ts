@@ -3,15 +3,15 @@ import {
   addProjectConfiguration,
   joinPathFragments,
   ProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
-import type { Tree } from '@nrwl/devkit';
+import type { Tree } from '@nx/devkit';
 
 export function addProject(host: Tree, options: NormalizedSchema) {
   const targets: Record<string, any> = {};
 
   targets.build = {
-    executor: '@nrwl/vite:build',
+    executor: '@nx/vite:build',
     outputs: ['{options.outputPath}'],
     defaultConfiguration: 'production',
     options: {
@@ -27,7 +27,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
   };
 
   targets.serve = {
-    executor: '@nrwl/vite:dev-server',
+    executor: '@nx/vite:dev-server',
     defaultConfiguration: 'development',
     options: {
       buildTarget: `${options.projectName}:build`,
@@ -46,7 +46,7 @@ export function addProject(host: Tree, options: NormalizedSchema) {
   };
 
   targets.preview = {
-    executor: '@nrwl/vite:preview-server',
+    executor: '@nx/vite:preview-server',
     defaultConfiguration: 'development',
     options: {
       buildTarget: `${options.projectName}:build`,

@@ -1,4 +1,4 @@
-import { addDependenciesToPackageJson, Tree } from '@nrwl/devkit';
+import { addDependenciesToPackageJson, Tree } from '@nx/devkit';
 import {
   lessVersion,
   sassVersion,
@@ -13,7 +13,7 @@ export function installCommonDependencies(
   let devDependencies = null;
 
   // Vite requires style preprocessors to be installed manually.
-  // `@nrwl/webpack` installs them automatically for now.
+  // `@nx/webpack` installs them automatically for now.
   // TODO(jack): Once we clean up webpack we can remove this check
   if (options.bundler === 'vite' || options.unitTestRunner === 'vitest') {
     switch (options.style) {

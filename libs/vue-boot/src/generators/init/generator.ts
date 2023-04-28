@@ -8,9 +8,9 @@ import {
   runTasksInSerial,
   Tree,
   updateNxJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
-import { initGenerator as jsInitGenerator } from '@nrwl/js';
+import { initGenerator as jsInitGenerator } from '@nx/js';
 import { nxVersion, typesNodeVersion, vueVersion } from '../../utils/versions';
 
 import { InitGeneratorSchema } from './schema';
@@ -49,9 +49,9 @@ function updateDependencies(host: Tree) {
 
 /**
  * install vve dependencies and initial js lib task
- * @param host 
- * @param schema 
- * @returns 
+ * @param host
+ * @param schema
+ * @returns
  */
 export async function vueInitGenerator(
   host: Tree,
@@ -69,9 +69,9 @@ export async function vueInitGenerator(
 
   // 统一在init生成器中配置测试框架，而不是viteinit 或 webpackinit配置测试框架
   if (!schema.e2eTestRunner || schema.e2eTestRunner === 'cypress') {
-    ensurePackage('@nrwl/cypress', nxVersion);
+    ensurePackage('@nx/cypress', nxVersion);
     const { cypressInitGenerator } = await import(
-      '@nrwl/cypress/src/generators/init/init'
+      '@nx/cypress/src/generators/init/init'
     );
     const cypressTask = await cypressInitGenerator(host, {});
     tasks.push(cypressTask);

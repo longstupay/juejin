@@ -3,9 +3,9 @@ import {
   applyChangesToString,
   getProjects,
   joinPathFragments,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { NormalizedSchema } from '../schema';
-import { ensureTypescript } from '@nrwl/js/src/utils/typescript/ensure-typescript';
+import { ensureTypescript } from '@nx/js/src/utils/typescript/ensure-typescript';
 import { addImport } from '../../../utils/ast-utils';
 
 let tsModule: typeof import('typescript');

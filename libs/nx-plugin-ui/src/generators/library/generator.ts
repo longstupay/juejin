@@ -12,9 +12,9 @@ import {
   runTasksInSerial,
   Tree,
   workspaceRoot,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
-import type { GeneratorCallback } from '@nrwl/devkit';
+import type { GeneratorCallback } from '@nx/devkit';
 
 import type { NormalizedSchema, Schema } from './schema';
 
@@ -23,7 +23,7 @@ import {
   componentGenerator,
   storybookConfigurationGenerator,
   setupTailwindGenerator,
-} from '@nrwl/react';
+} from '@nx/react';
 import { createFiles } from './lib/createFile-import-css';
 import addExportsToBarrel from './lib/addExportsToBarrel';
 import updateProject from './lib/update-projece';
@@ -153,7 +153,6 @@ export default async function (
 
   // 更新project.json
   updateProject(tree, normOptions);
-
 
   const addPrettierTailwindPlugin = addDependenciesToPackageJson(
     tree,

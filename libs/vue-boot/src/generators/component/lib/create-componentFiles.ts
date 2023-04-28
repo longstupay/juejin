@@ -1,9 +1,8 @@
-import { Tree, joinPathFragments, toJS, generateFiles } from '@nrwl/devkit';
+import { Tree, joinPathFragments, toJS, generateFiles } from '@nx/devkit';
 import { NormalizedSchema } from '../schema';
 // import { getComponentTests } from './get-component-tests';
 
 export function createComponentFiles(host: Tree, options: NormalizedSchema) {
-
   const componentDir = joinPathFragments(
     options.projectSourceRoot,
     options.directory

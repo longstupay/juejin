@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Library",
   "title": "",
   "type": "object",
@@ -31,7 +30,10 @@
         "message": "Which stylesheet format would you like to use?",
         "type": "list",
         "items": [
-          { "value": "css", "label": "CSS" },
+          {
+            "value": "css",
+            "label": "CSS"
+          },
           {
             "value": "scss",
             "label": "SASS(.scss)       [ http://sass-lang.com          ]"
@@ -66,7 +68,10 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["eslint", "none"],
+      "enum": [
+        "eslint",
+        "none"
+      ],
       "default": "eslint"
     },
     "inSourceTests": {
@@ -156,7 +161,10 @@
     },
     "compiler": {
       "type": "string",
-      "enum": ["babel", "swc"],
+      "enum": [
+        "babel",
+        "swc"
+      ],
       "default": "babel",
       "description": "Which compiler to use. Only applies to `bundler: 'rollup'`."
     },
@@ -172,5 +180,7 @@
       "default": false
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

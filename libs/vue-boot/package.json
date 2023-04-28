@@ -5,10 +5,10 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
-    "@nrwl/devkit": "15.9.2",
-    "@nrwl/js": "15.9.2",
-    "@nrwl/linter": "15.9.2",
-    "@nrwl/workspace": "15.9.2"
+    "@nx/devkit": "16.0.0",
+    "@nx/workspace": "16.0.0",
+    "@nx/js": "16.0.0",
+    "@nx/linter": "16.0.0"
   },
   "devDependencies": {
     "inquirer": "8.2.5",

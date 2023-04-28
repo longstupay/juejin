@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Viteconfiguration",
   "title": "config a project to use Vite",
   "type": "object",
@@ -12,7 +11,10 @@
         "$source": "argv",
         "index": 0
       },
-      "aliases": ["name", "projectName"],
+      "aliases": [
+        "name",
+        "projectName"
+      ],
       "x-dropdown": "project",
       "x-prompt": "What is the name of the project to set up Vite for?"
     },
@@ -28,7 +30,10 @@
     "uiFramework": {
       "type": "string",
       "description": "UI Framework to use for Vite.",
-      "enum": ["vue", "none"],
+      "enum": [
+        "vue",
+        "none"
+      ],
       "default": "none",
       "x-prompt": "What UI framework plugin should Vite use?"
     },

@@ -6,7 +6,7 @@ import {
   joinPathFragments,
   readProjectConfiguration,
   updateProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import { maybeJs } from './maybe-js';
 import { NormalizedSchema } from '../schema';
@@ -20,9 +20,9 @@ export async function addRollupBuildTarget(
   host: Tree,
   options: NormalizedSchema
 ) {
-  const { rollupInitGenerator } = ensurePackage('@nrwl/rollup', nxVersion);
+  const { rollupInitGenerator } = ensurePackage('@nx/rollup', nxVersion);
 
-  // These are used in `@nrwl/react/plugins/bundle-rollup`
+  // These are used in `@nx/react/plugins/bundle-rollup`
   addDependenciesToPackageJson(
     host,
     {},
@@ -41,7 +41,7 @@ export async function addRollupBuildTarget(
   external.push('vue');
 
   targets.build = {
-    executor: '@nrwl/rollup:rollup',
+    executor: '@nx/rollup:rollup',
     outputs: ['{options.outputPath}'],
     options: {
       outputPath:

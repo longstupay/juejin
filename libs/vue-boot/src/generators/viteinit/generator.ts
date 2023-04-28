@@ -5,7 +5,7 @@ import {
   runTasksInSerial,
   Tree,
   updateJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import {
   vitePluginVueVersion,

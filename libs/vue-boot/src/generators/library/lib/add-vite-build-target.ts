@@ -5,7 +5,7 @@ import {
   joinPathFragments,
   readProjectConfiguration,
   updateProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import { NormalizedSchema } from '../schema';
 import {
@@ -29,7 +29,7 @@ export function addViteBuildTarget(host: Tree, options: NormalizedSchema) {
     {},
     {
       ...devDependencies,
-      '@nrwl/vite': nxVersion,
+      '@nx/vite': nxVersion,
     }
   );
 
@@ -42,7 +42,7 @@ export function addViteBuildTarget(host: Tree, options: NormalizedSchema) {
   external.push('vue');
 
   targets.build = {
-    executor: '@nrwl/vite:build',
+    executor: '@nx/vite:build',
     outputs: ['{options.outputPath}'],
     defaultConfiguration: 'production',
     options: {

@@ -4,8 +4,7 @@ import {
   GeneratorCallback,
   runTasksInSerial,
   Tree,
-} from '@nrwl/devkit';
-
+} from '@nx/devkit';
 
 import { Schema } from './schema';
 import { createComponentFiles } from './lib/create-componentFiles';
@@ -28,8 +27,6 @@ export async function componentGenerator(host: Tree, schema: Schema) {
 
   return runTasksInSerial(...tasks);
 }
-
-
 
 export default componentGenerator;
 

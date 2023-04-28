@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Vitevue",
   "title": "Boot Vue or others framework with Vite",
   "type": "object",
@@ -8,7 +7,10 @@
     "uiFramework": {
       "type": "string",
       "description": "UI Framework to use for Vite.",
-      "enum": ["vue", "none"],
+      "enum": [
+        "vue",
+        "none"
+      ],
       "default": "vue",
       "x-prompt": "What UI framework plugin should Vite use?"
     },

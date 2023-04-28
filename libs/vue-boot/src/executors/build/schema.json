@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "cli": "nx",
   "title": "Build executor",
   "description": "",
   "type": "object",
@@ -41,7 +40,10 @@
           }
         },
         "additionalProperties": false,
-        "required": ["replace", "with"]
+        "required": [
+          "replace",
+          "with"
+        ]
       },
       "default": []
     },
@@ -108,7 +110,12 @@
     "logLevel": {
       "type": "string",
       "description": "Adjust console output verbosity.",
-      "enum": ["info", "warn", "error", "silent"]
+      "enum": [
+        "info",
+        "warn",
+        "error",
+        "silent"
+      ]
     },
     "mode": {
       "type": "string",
