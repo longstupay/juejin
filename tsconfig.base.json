@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@juejin/h3vb": ["libs/h3vb/src/index.js"],
       "@longstupay/vue-nx-boot": ["libs/vue-boot/src/index.ts"],
       "nx-awesome-lib": ["libs/ui/taib-ui/src/index.ts"],
       "taibui-devkit": ["libs/nx-plugin-ui/src/index.ts"]
