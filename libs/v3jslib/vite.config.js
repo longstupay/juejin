@@ -21,9 +21,9 @@ module.exports = defineConfig({
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'mycpm',
       formats: ['es', 'cjs'],
-      fileName: (format) => `taic.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
-    outDir: 'dist/src/',
+    outDir: 'dist/libs/v3jslib',
     rollupOptions: {
       external: ['vue'],
       output: {
