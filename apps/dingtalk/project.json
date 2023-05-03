@@ -1,0 +1,55 @@
+{
+  "name": "dingtalk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dingtalk",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/dingtalk",
+        "outputPath": "dist/apps/dingtalk"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/dingtalk"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "dingtalk:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "dingtalk:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "dingtalk:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "dingtalk:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/dingtalk/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
