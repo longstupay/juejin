@@ -51,5 +51,6 @@
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["ui-taib-ui"]
 }
