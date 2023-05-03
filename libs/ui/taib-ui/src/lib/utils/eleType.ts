@@ -1,1 +1,7 @@
-export const buttonType = ['nav', 'primary', 'secondary', 'drop'] as const;
+export const buttonType = [
+  'nav',
+  'primary',
+  'secondary',
+  'drop',
+  'outline',
+] as const;

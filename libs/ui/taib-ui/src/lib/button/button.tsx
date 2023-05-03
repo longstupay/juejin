@@ -4,7 +4,7 @@ import type { buttonType } from '../utils/eleType';
 /* eslint-disable-next-line */
 export interface ButtonProps {
   children?: React.ReactNode;
-  type?: (typeof buttonType)[number];
+  variant?: (typeof buttonType)[number];
   as?: keyof JSX.IntrinsicElements;
 }
 
@@ -12,7 +12,7 @@ export interface CustomButtonProps
   extends React.HTMLAttributes<HTMLOrSVGElement> {}
 
 export function Button(props: ButtonProps) {
-  const { type = 'primary', as } = props;
+  const { variant = 'primary', as } = props;
   const [cls, setCls] = useState<string>('');
 
   //with custom Tag
@@ -21,17 +21,19 @@ export function Button(props: ButtonProps) {
     return <Tag {...props} />;
   };
 
-  //封装一个函数根据type返回不同的样式
-  const getClassName = (type: string) => {
-    switch (type) {
+  //封装一个函数根据variant返回不同的样式
+  const getClassName = (variant: string) => {
+    switch (variant) {
       case 'primary':
-        return 'px-2 py-3 bg-dk-primary text-white rounded-md';
+        return 'px-2 py-1 bg-dk-primary text-white rounded-md';
       case 'secondary':
-        return 'px-2 py-3 bg-dk-secondary text-white rounded-md';
+        return 'px-2 py-1 bg-dk-secondary text-white rounded-md';
       case 'nav':
-        return 'px-2 py-3 bg-dk-nav rounded-md hover:bg-gray-200 hover:text-dk-primary cursor-pointer';
+        return 'px-2 py-1 bg-dk-nav rounded-md hover:bg-gray-200 hover:text-dk-primary cursor-pointer';
       case 'drop':
-        return 'px-2 py-3 bg-dk-drop rounded-md hover:bg-gray-200 hover:text-dk-primary cursor-pointer';
+        return 'px-2 py-1 bg-dk-drop rounded-md hover:bg-gray-200 hover:text-dk-primary cursor-pointer';
+      case 'outline':
+        return 'px-2 py-1 border border-gray-300 text-dk-primary rounded-md hover:bg-dk-primary hover:text-white cursor-pointer';
       default:
         return '';
     }
@@ -46,9 +48,9 @@ export function Button(props: ButtonProps) {
 
   //使用useLayoutEffect来获取className
   useLayoutEffect(() => {
-    const className = getClassName(type);
+    const className = getClassName(variant);
     setCls(className);
-  }, [type]);
+  }, [variant]);
 
   return <RenderButton>{props.children}</RenderButton>;
 }
