@@ -4,6 +4,6 @@
 
 @layer components {
   .ctx {
-    @apply flex justify-center items-start;
+    @apply flex justify-center items-center;
   }
 }
